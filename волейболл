@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Volleyshop Sokal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Volleyshop Sokal" class="logo">
+  <h1>Volleyshop Sokal</h1>
+  <p>Все для волейболу • Без онлайн-оплати</p>
+</header>
+
+<nav>
+  <a href="#catalog">Каталог</a>
+  <a href="#cart">Кошик</a>
+  <a href="#contacts">Контакти</a>
+</nav>
+
+<section id="catalog">
+  <h2>Каталог товарів</h2>
+
+  <div class="products">
+
+    <div class="product">
+      <img src="https://via.placeholder.com/400x300" alt="М'яч">
+      <h3>М’яч Pro Match V5</h3>
+      <p class="price">1 250 грн</p>
+      <button onclick="addToCart('М’яч Pro Match V5 — 1 250 грн')">
+        Додати в кошик
+      </button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/400x300" alt="Форма">
+      <h3>Форма Team Classic</h3>
+      <p class="price">1 600 грн</p>
+      <button onclick="addToCart('Форма Team Classic — 1 600 грн')">
+        Додати в кошик
+      </button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/400x300" alt="Наколінники">
+      <h3>Наколінники Defense Pro</h3>
+      <p class="price">780 грн</p>
+      <button onclick="addToCart('Наколінники Defense Pro — 780 грн')">
+        Додати в кошик
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<section id="cart">
+  <h2>🛒 Кошик</h2>
+  <div id="cartItems"></div>
+
+  <h3>Контактні дані</h3>
+  <input type="text" placeholder="Ваше імʼя">
+  <input type="tel" placeholder="Телефон">
+  <textarea placeholder="Коментар до замовлення"></textarea>
+
+  <button onclick="sendOrder()">Надіслати замовлення</button>
+</section>
+
+<section id="contacts">
+  <h2>Контакти</h2>
+  <p>📍 м. Сокаль</p>
+  <p>📞 +38 XXX XXX XX XX</p>
+  <p>🕘 Щодня 9:00 – 19:00</p>
+</section>
+
+<footer>
+  © 2026 Volleyshop Sokal
+</footer>
+
+<script>
+  let cart = [];
+
+  function addToCart(item) {
+    cart.push(item);
+    renderCart();
+    alert("Товар додано в кошик");
+  }
+
+  function renderCart() {
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+    cart.forEach(product => {
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.textContent = "• " + product;
+      cartItems.appendChild(div);
+    });
+  }
+
+  function sendOrder() {
+    if (cart.length === 0) {
+      alert("Кошик порожній");
+      return;
+    }
+    alert("Замовлення прийнято! Ми вам передзвонимо.");
+    cart = [];
+    renderCart();
+  }
+</script>
+
+</body>
+</html>
